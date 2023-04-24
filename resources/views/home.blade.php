@@ -20,6 +20,9 @@
                         Tu correo es: {{auth()->user()->email}} <br>
                         Tu depto es: {{auth()->user()->depto}} <br>
                     </p>
+                    @role('admin')
+                    <p>texto solo para admins B=)</p>
+                    @endrole
                 </div>
             </div>
         </div>
