@@ -11,8 +11,12 @@
                 <p>Rol: {{$usuario->getRoleNames()->implode(', ')}}</p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-secondary" href="{{route('users.edit',$usuario->id)}}">Editar</a>
-                <a class="btn btn-danger" href="{{route('users.destroy',$usuario)}}">Eliminar</a>
+                <a class="btn btn-secondary" href="{{route('users.edit', $usuario->id)}}">Editar</a>
+                <form action="{{route('users.destroy', $usuario->id)}}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
             </div>
         </div>
         @endforeach
