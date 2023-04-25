@@ -20,9 +20,12 @@
                         Tu correo es: {{auth()->user()->email}} <br>
                         Tu depto es: {{auth()->user()->depto}} <br>
                     </p>
-                    @role('admin')
+                    @role('administrador')
                     <p>texto solo para admins B=)</p>
                     @endrole
+                    @can('ver boton')
+                        <button class="btn btn-primary">Boton Gracioso!</button>
+                    @endcan
                 </div>
             </div>
         </div>
