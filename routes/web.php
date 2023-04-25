@@ -23,6 +23,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/evento', [App\Http\Controllers\EventoController::class, 'index']);
+
 Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::resource('users', UserController::class);
 });
