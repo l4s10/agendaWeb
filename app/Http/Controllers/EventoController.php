@@ -28,7 +28,9 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(Evento::$rules);
+        Evento::create($request->all());
+        return redirect()->route('eventos.index');
     }
 
     /**
@@ -36,9 +38,14 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        //
+
     }
 
+    public function data()
+    {
+        $eventos = Evento::all();
+        return response()->json($eventos);
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -23,6 +23,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $eliminarUsuario = Permission::create(["name" => "delete user"]);
 
         $verCosa = Permission::create(["name" => "ver boton"]);
+
         //*Creamos roles y asignamos permisos */
         $admin = Role::create(["name" => "administrador"]);
         $admin->givePermissionTo($crearUsuario);
@@ -31,11 +32,11 @@ class RolesAndPermissionsSeeder extends Seeder
         $admin->givePermissionTo($eliminarUsuario);
         $admin->givePermissionTo($verCosa);
 
-        $escritor = Role::create(["name" => "lector"]);
-        $escritor->givePermissionTo($verCosa);
+        $escritor = Role::create(["name" => "funcionario"]);
+        // $escritor->givePermissionTo($verCosa);
 
         //*Asingamos rol a user 1 */
-        $user = User::find(1);
-        $user->assignRole($admin);
+        // $user = User::find(1);
+        // $user->assignRole($admin);
     }
 }
