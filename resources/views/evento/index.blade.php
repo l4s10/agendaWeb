@@ -25,7 +25,7 @@
                     <form action="{{route('eventos.store')}}" method="POST">
                         @csrf
                         <div class="mb-3 d-none">
-                            <input type="hidden" name="id" id="id">
+                            <input type="number" name="id" id="id" hidden>
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label">Titulo</label>
@@ -114,6 +114,7 @@
                 axios.get(`http://localhost:8000/eventos/${evento_id}/edit`)
                     .then(function(response) {
                         console.log(response);
+                        $('#id').val(response.data.id);
                         $('#title').val(response.data.title);
                         $('#descripcion').val(response.data.descripcion);
                         $('#start').val(response.data.start);
@@ -135,7 +136,7 @@
         document.getElementById("btnEliminar").addEventListener("click", function(){
             var evento_id = document.getElementById("id").value;
 
-            axios.delete(`/eventos/${evento_id}`)
+            axios.post(`/eventos/borrar/${evento_id}`)
             .then(function(response) {
                 // Cierra el modal
                 $("#evento").modal("hide");

@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/eventos/data', [EventoController::class, 'data'])->name('evento.data');
+Route::post('/eventos/borrar/{id}', [EventoController::class, 'destroy'])->name('evento.destroy');
 Route::resource('/eventos', 'App\Http\Controllers\EventoController');
 
 Route::middleware(['auth', 'role:administrador'])->group(function () {
